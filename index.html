@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="icon" type="image/png" href="./favico.png">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono&subset=greek">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Drumset</title>
+</head>
+<body>
+    <main id="drum-machine" class="container-fluid text-center">
+        <div id="display">
+            <header>
+                <h1>Drum Machine</h1>
+                <h3 id="display-keypress"></h3>
+            </header>
+            <div class="row">
+                <div id="Q" class="drum-pad">
+                    <div>Q<audio id="Q-play" src="/sounds/Q.wav" type="audio/wav"></audio></div>
+                </div>
+                <div id="W" class="drum-pad">
+                    <div>W<audio id="W-play"src="/sounds/W.wav" type="audio/wav"></audio></div>
+                </div>
+                <div id="E" class="drum-pad">
+                    <div>E<audio id="E-play"src="/sounds/E.wav" type="audio/wav"></audio></div>
+                </div>
+            </div>
+            <div class="row">
+                <div id="A" class="drum-pad">
+                    <div>A<audio id="A-play" src="/sounds/A.wav" type="audio/wav"></audio></div>
+                </div>
+                <div id="S" class="drum-pad">
+                    <div>S<audio id="S-play" src="/sounds/S.wav" type="audio/wav"></audio></div>
+                </div>
+                <div id="D" class="drum-pad">
+                    <div>D<audio id="D-play"src="/sounds/D.wav" type="audio/wav"></audio></div>
+                </div>
+            </div>
+            <div class="row">
+                <div id="Z" class="drum-pad">
+                    <div>Z<audio id="Z-play" src="/sounds/Z.wav" type="audio/wav"></audio></div>
+                </div>
+                <div id="X" class="drum-pad">
+                    <div>X<audio id="X-play" src="/sounds/X.wav" type="audio/wav"></audio></div>
+                </div>
+                <div id="C" class="drum-pad">
+                    <div>C<audio id="C-play" src="/sounds/C.wav" type="audio/wav"></audio></div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script>
+        // Array of ids for drum-piece
+        let ids = ["Q", "W", "E", "A", "S", "D", "Z", "X", "C"];
+
+        // Add event listeners to the divs with Ids in above array that play the corresponding sound when click or key pressed.
+        ids.map(id => {
+            $(`#${id}`).click(() => $(`#${id}-play`)[0].play());
+        });
+
+        // Capture keys
+        $(document).keypress((event) => {
+            switch(event.which) {
+                case 113:
+                    $("#Q-play")[0].play();
+                    $("#display-keypress").html("Q")
+                    break;
+                case 119:
+                    $("#W-play")[0].play();
+                    $("#display-keypress").html("W")
+                    break;
+                case 101:
+                    $("#E-play")[0].play();
+                    $("#display-keypress").html("E")
+                    break;
+                case 97:
+                    $("#A-play")[0].play();
+                    $("#display-keypress").html("A")
+                    break;
+                case 115:
+                    $("#S-play")[0].play();
+                    $("#display-keypress").html("S")
+                    break;
+                case 100:
+                    $("#D-play")[0].play();
+                    $("#display-keypress").html("E")
+                    break;
+                case 122:
+                    $("#Z-play")[0].play();
+                    $("#display-keypress").html("Z")
+                    break;
+                case 120:
+                    $("#X-play")[0].play();
+                    $("#display-keypress").html("X")
+                    break;
+                case 99:
+                    $("#C-play")[0].play();
+                    $("#display-keypress").html("C")
+                    break;
+                default:
+                    return
+            }
+        })
+    </script>
+</body>
+</html>
